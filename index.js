@@ -4,6 +4,7 @@ const playerContainer = document.querySelector(".player-container")
 
 // render one player to the DOM
 function renderPlayer(player) {
+  // debugger
   // create an element for the outer div
   const playerDiv = document.createElement("div")
 
@@ -40,7 +41,36 @@ function toggleColor(element) {
   }
 }
 
+document.addEventListener("click", function(event){
+  toggleColor(document.querySelector("h1#header"))
+})
+
 
 /***** Deliverable 2 *****/
+document.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  let playerNumber = document.getElementsByName("number")[0];
+  let playerName = document.getElementsByName("name")[0];
+  let playerNickName = document.getElementsByName("nickname")[0];
+  let playerPhoto = document.getElementsByName("photo")[0];
+
+  let newPlayer = {}
+
+  newPlayer["number"] = playerNumber.value;
+  newPlayer["name"] = playerName.value;
+  newPlayer["nickname"] = playerNickName.value;
+  newPlayer["photo"] = playerPhoto.value;
+  newPlayer["likes"] = 1000;
+  debugger;
+  renderPlayer(newPlayer);
+});
 
 /***** Deliverable 3 *****/
+
+playerContainer.addEventListener("click", function(event){
+  // if(event.target.children)
+  // debugger;
+  let likes = event.target.parentNode.querySelector(".likes");
+  likes.innerText = parseInt(likes.innerText) + 1 + " likes"
+})
